@@ -4,13 +4,20 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public interface IForm1
+    {
+        void Test(string message);
+    }
+
+    [ComDefaultInterface(typeof(IForm1))]
+    public partial class Form1 : Form, IForm1
     {
         private readonly WebBrowser webBrowser1 = new WebBrowser();
 
